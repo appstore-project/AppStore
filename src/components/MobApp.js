@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import MobApp from './MobApp';
 
 export default class Row extends Component {
 
@@ -11,8 +10,7 @@ export default class Row extends Component {
     render() {
 
         return <div>
-            <MobApp name='خروس جنگی' author='نوید سافت' >App1</MobApp>
-            <MobApp name='آی قصه' author='محمد رازی' ></MobApp>
+            <div style={this.style}>App1</div>
         </div>
             ;
     }
