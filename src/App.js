@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { homedir } from 'os';
 import Home from './components/Home';
+import AppBar from './components/AppBar';
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
         </header>
       </div> */}
 
+        <AppBar></AppBar>
         <Home></Home>
       </>
     );

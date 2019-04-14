@@ -1,10 +1,12 @@
 import React from 'react';
-import Row from './Row';
+import SingleLineGridList from './RowList';
 
 export default function render() {
     return <>
-        <Row></Row>
-        <Row></Row>
+        <SingleLineGridList title='برنامه‌های تازهٔ برگزیده' tyepId={1} />
+        <SingleLineGridList title='بازیهای تازهٔ برگزیده' tyepId={2} />
+        <SingleLineGridList title='به‌روزشده‌های برگزیده' tyepId={2} />
+        <SingleLineGridList />
     </>
         ;
 }
