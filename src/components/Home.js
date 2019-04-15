@@ -1,12 +1,12 @@
 import React from 'react';
-import SingleLineGridList from './RowList';
+import AppRow from './AppRow';
 
 export default function render() {
     return <>
-        <SingleLineGridList title='برنامه‌های تازهٔ برگزیده' tyepId={1} />
-        <SingleLineGridList title='بازیهای تازهٔ برگزیده' tyepId={2} />
-        <SingleLineGridList title='به‌روزشده‌های برگزیده' tyepId={2} />
-        <SingleLineGridList />
+        <AppRow title='برنامه‌های تازهٔ برگزیده' tyepId={1} />
+        <AppRow title='به‌روزشده‌های برگزیده ' tyepId={2} />
+        <AppRow title='مجموعه‌های بازی' tyepId={3} wide={true} />
+        <AppRow title='برنامه‌های در حال پیشرفت' tyepId={2} />
     </>
         ;
 }

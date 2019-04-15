@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { homedir } from 'os';
 import Home from './components/Home';
-import AppBar from './components/AppBar';
+import AppBar from './AppBar';
 
 class App extends Component {
   render() {

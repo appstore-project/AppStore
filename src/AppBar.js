@@ -20,7 +20,8 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 const styles = theme => ({
     root: {
         width: '100%',
-        backgroundColor: '#91B42F'
+        backgroundColor: '#91B42F',
+        marginBottom:50
     },
     grow: {
         flexGrow: 1,
@@ -165,13 +166,13 @@ class PrimarySearchAppBar extends React.Component {
 
         return (
             <div className={classes.root} variant='' style={{ direction: 'rtl', backgroundColor: '#91B42F' }}>
-                <AppBar position="static">
+                <AppBar position="fixed">
                     <Toolbar>
                         <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
                             <MenuIcon />
                         </IconButton>
-                        <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-                            اپیاب
+                        <Typography className={classes.title} variant="h6" color="inherit" noWrap style={{marginRight:20}}>
+                            اپ یاب
                         </Typography>
                         <div className={classes.search}>
                             <InputBase

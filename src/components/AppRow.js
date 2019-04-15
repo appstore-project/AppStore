@@ -6,7 +6,8 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
-import MobApp from './MobApp';
+import AppCard from './AppCard';
+import { Typography, Link, Button } from '@material-ui/core';
 
 const styles = theme => ({
   root: {
@@ -16,6 +17,7 @@ const styles = theme => ({
     justifyContent: 'space-around',
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
+    padding: 20
   },
   gridList: {
     flexWrap: 'nowrap',
@@ -32,15 +34,29 @@ const styles = theme => ({
 });
 
 
-function SingleLineGridList(props) {
+async function componentDidMount() {
+  // let res = await Ctrl.getAllForGrid();
+  // console.log(res);
+  // this.setState({ data: res });
+  // console.log('completed');
+}
+
+function AppRow(props) {
   const { classes } = props;
 
   return (
     <div className={classes.root}>
+      <div style={{ width: '100%' }}>
+        <Typography align='right' variant='h3'>{props.title}</Typography>
+        {/* <Link to='/apps/'>بیشتر</Link> */}
+        <Button size='small' color='primary'>
+          بیشتر
+        </Button>
+      </div>
       <GridList className={classes.gridList} cols={2.5}>
 
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(tile => (
-          <MobApp key={1} name='خروس جنگی' author='نوید سافت' >App1</MobApp>
+        {[1000, 2000, 3000, 4000, 5000, 1000, 2000, 3000, 4000, 5000, 1000, 2000, 3000, 4000, 5000].map(id => (
+          <AppCard key={0} appCode={id} name='خروس جنگی' author='نوید سافت' wide={props.wide} />
         ))}
 
       </GridList>
@@ -48,8 +64,8 @@ function SingleLineGridList(props) {
   );
 }
 
-SingleLineGridList.propTypes = {
+AppRow.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SingleLineGridList);
+export default withStyles(styles)(AppRow);
