@@ -47,7 +47,7 @@ function AppRow(props) {
   return (
     <div className={classes.root}>
       <div style={{ width: '100%' }}>
-        <Typography align='right' variant='h4'>{props.title}</Typography>
+        <Typography align='right' variant='h5'>{props.title}</Typography>
         {/* <Link to='/apps/'>بیشتر</Link> */}
         <Button size='small' color='primary'>
           بیشتر

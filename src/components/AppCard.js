@@ -37,7 +37,7 @@ function AppCard(props) {
           title='Contemplative Reptile'
         />
         <CardContent>
-          <Typography gutterBottom variant='h5' component='h2'>
+          <Typography gutterBottom variant='h5' component='h5'>
             خروس جنگی
             </Typography>
         </CardContent>
