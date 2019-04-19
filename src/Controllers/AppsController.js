@@ -45,18 +45,26 @@ Ctrl.getAppInfo = async (appCode) => {
     return (resInfo);
 };
 
-Ctrl.addComment = async (appCode, text) => {
+Ctrl.addComment = async (appCode, rate, comment) => {
 
     if (runWithoutBackend) {
-        let res = testApps.filter(x => x.appCode == appCode);
-        return res;
+        let user = 'User';
+        
+        let apArr = testApps.filter(x => x.appCode == appCode);
+        console.log(apArr);
+
+        let ap = apArr[0];
+        ap.comments.push({ user, rate, comment });
+        alert('نظر ثبت شد:' + comment);
+
+        return 'comment done!';
     }
 
     var url = new URL('http://localhost:3000/apps/addComment'),
-        params = { text };
+        params = { comment };
 
     Object.keys(params).map(key => url.searchParams.append(key, params[key]));
-    alert('نظر ثبت شد:' + text);
+    alert('نظر ثبت شد:' + comment);
 
     let res = await fetch(url);
     let resInfo = await res.json();

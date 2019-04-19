@@ -101,7 +101,7 @@ class AppInfo extends Component {
               <Grid container item xs={6}>
                 <Grid item xs={12} style={{ padding: 15 }}>
                   <Typography variant='h6'>نظرشما:</Typography>
-                  <AddComment></AddComment>
+                  <AddComment appCode={app.appCode}></AddComment>
                 </Grid>
                 <Grid item xs={12} style={{ padding: 15 }}>
                   <Typography variant='h5'>نظرات:</Typography>

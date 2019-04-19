@@ -8,7 +8,7 @@ export default class AddComment extends Component {
 
         return <div>
             <input type='text' ref={x => this.txt = x}></input>
-            <button onClick={() => appsCtrl.addComment(this.txt.value)}>ثبت نظر</button>
+            <button onClick={() => appsCtrl.addComment(this.props.appCode, 3, this.txt.value)}>ثبت نظر</button>
         </div>;
     }
 }
