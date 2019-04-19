@@ -1,12 +1,11 @@
 import React from 'react';
 import AppRow from './AppRow';
 
-export default function render() {
+export default function render(props) {
     return <>
-        <AppRow title='برنامه‌های تازهٔ برگزیده' tyepId={1} />
-        <AppRow title='به‌روزشده‌های برگزیده ' tyepId={2} />
-        <AppRow title='مجموعه‌های بازی' tyepId={3} wide={true} />
-        <AppRow title='برنامه‌های در حال پیشرفت' tyepId={2} />
-    </>
-        ;
+        <AppRow history={props.history} title='برنامه‌های تازهٔ برگزیده' groupId={1} />
+        <AppRow history={props.history} title='به‌روزشده‌های برگزیده ' groupId={2} />
+        <AppRow history={props.history} title='مجموعه‌های بازی' groupId={3} wide={true} />
+        <AppRow history={props.history} title='برنامه‌های در حال پیشرفت' groupId={2} />
+    </>;
 }

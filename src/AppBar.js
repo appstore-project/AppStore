@@ -16,12 +16,13 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import { Link } from '@material-ui/core';
 
 const styles = theme => ({
     root: {
         width: '100%',
         backgroundColor: '#91B42F',
-        marginBottom:50
+        marginBottom: 50
     },
     grow: {
         flexGrow: 1,
@@ -31,10 +32,13 @@ const styles = theme => ({
         marginRight: 20,
     },
     title: {
+        color: 'white',
         display: 'none',
         [theme.breakpoints.up('sm')]: {
             display: 'block',
         },
+        marginRight: 20,
+        cursor: 'pointer'
     },
     search: {
         position: 'relative',
@@ -171,9 +175,11 @@ class PrimarySearchAppBar extends React.Component {
                         <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
                             <MenuIcon />
                         </IconButton>
-                        <Typography className={classes.title} variant="h6" color="inherit" noWrap style={{marginRight:20}}>
-                            اپ آباد
+
+                        <Typography onClick={() => this.props.history.push('/')} className={classes.title} variant="h6" noWrap >
+                            اَپ آباد
                         </Typography>
+
                         <div className={classes.search}>
                             <InputBase
                                 placeholder="Search…"

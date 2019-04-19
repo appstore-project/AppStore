@@ -5,15 +5,17 @@ import { homedir } from 'os';
 import Home from './components/Home';
 import AppBar from './AppBar';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { Route } from 'react-router-dom';
+import AppInfo from './components/AppInfo';
 
 const theme = createMuiTheme({
   palette: {
-      primary: { main: '#228e22' },
-      secondary: { main: '#4d4d4d' },
+    primary: { main: '#228e22' },
+    secondary: { main: '#4d4d4d' },
   },
   typography: {
-      useNextVariants: true,
-      fontFamily: 'Iran Sans", tahoma',
+    useNextVariants: true,
+    fontFamily: 'Iran Sans", tahoma',
   },
 });
 
@@ -21,25 +23,9 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-        {/* <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div> */}
-
-        <AppBar></AppBar>
-        <Home></Home>
+        <Route path='/' component={(props) => <AppBar {...props} />} />
+        <Route path='/' exact component={(props) => <Home {...props} />} />
+        <Route path="/appinfo/:id" render={(props) => { return <AppInfo {...props} appCode={props.match.params.id} />; }} />
       </MuiThemeProvider>
     );
   }

@@ -1,4 +1,5 @@
-import React from 'react';
+import { Ctrl as appsCtrl } from '../Controllers/AppsController';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
@@ -33,35 +34,49 @@ const styles = theme => ({
   },
 });
 
+class AppRow extends Component {
 
-async function componentDidMount() {
-  // let res = await Ctrl.getAllForGrid();
-  // console.log(res);
-  // this.setState({ data: res });
-  // console.log('completed');
-}
+  constructor(props) {
+    super(props);
 
-function AppRow(props) {
-  const { classes } = props;
+    this.state = { appslist: [] };
+  }
 
-  return (
-    <div className={classes.root}>
-      <div style={{ width: '100%' }}>
-        <Typography align='right' variant='h5'>{props.title}</Typography>
-        {/* <Link to='/apps/'>بیشتر</Link> */}
-        <Button size='small' color='primary'>
-          بیشتر
+  async componentDidMount() {
+
+    let res = await appsCtrl.getAppsOfGroup();
+    this.setState({ appslist: res });
+  }
+
+  render() {
+    const { classes } = this.props;
+
+    let i = 0;
+
+    return (
+      <div className={classes.root}>
+        <div style={{ width: '100%' }}>
+          <Typography align='right' variant='h6'>{this.props.title}</Typography>
+          {/* <Link to='/apps/'>بیشتر</Link> */}
+          <Button size='small' color='primary'>
+            بیشتر
         </Button>
+          {this.state.appslist == [] ? (<span>منتظر بمانید...</span>)
+            : <div>
+              <GridList className={classes.gridList} cols={2}>
+                {
+                  this.state.appslist.map(ap => <AppCard history={this.props.history}  key={i++} app={ap} wide={this.props.wide} />)
+                }
+                {
+                  this.state.appslist.map(ap => <AppCard history={this.props.history}  key={i++} app={ap} wide={this.props.wide} />)
+                }
+              </GridList>
+            </div>
+          }
+        </div>
       </div>
-      <GridList className={classes.gridList} cols={2.5}>
-
-        {[1000, 2000, 3000, 4000, 5000, 1000, 2000, 3000, 4000, 5000, 1000, 2000, 3000, 4000, 5000].map(id => (
-          <AppCard key={0} appCode={id} name='خروس جنگی' author='نوید سافت' wide={props.wide} />
-        ))}
-
-      </GridList>
-    </div>
-  );
+    );
+  }
 }
 
 AppRow.propTypes = {
