@@ -11,10 +11,13 @@ let testApps = [
     { '_id': '5cb6177b66b4fe5110fb84b4', 'appCode': 1000, 'name': 'خروس جنگی', 'developer': 'مدریک', 'rate': 4.5, 'category': 'امتیازی', 'isGame': 'TRUE', 'inatallCount': ' 20,000 ', 'size_mb': 78.2, 'version': '2.0.82', 'shamed': '۱-۲-۶۸۹۷۷۷-۶۳-۰-۱۴۱۱۰۷', 'price': 0, 'inAppPurchase': true, 'descr': '', 'lastChanges': '', 'access': '' },
 ];
 
-Ctrl.getAppsOfGroup = async () => {
+Ctrl.getAppsOfGroup = async (searchStr) => {
 
     if (runWithoutBackend)
-        return testApps;
+        if (!searchStr)
+            return testApps
+        else
+            return testApps.filter(x => x.name.indexOf(searchStr) >= 0);
 
     var url = new URL('http://localhost:3000/apps/getAll'),
         params = { n: 100000, offset: 0 };
@@ -49,7 +52,7 @@ Ctrl.addComment = async (appCode, rate, comment) => {
 
     if (runWithoutBackend) {
         let user = 'User';
-        
+
         let apArr = testApps.filter(x => x.appCode == appCode);
         console.log(apArr);
 
