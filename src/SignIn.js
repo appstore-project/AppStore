@@ -17,7 +17,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import RTL from './RTL';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
-  
+
 import { Redirect } from 'react-router-dom';
 //export default withRouter(MyComponent);
 
@@ -84,7 +84,9 @@ class SignIn extends React.Component {
 
         if (u === 'admin' && p === 'admin') {
             localStorage.setItem('user', u /*JSON.stringify({ userName: 'reza' })*/);
-            //this.props.history.push('/app');
+
+            //console.log('redirecting');
+            //this.props.history.push('/redirect');
             this.setState({ loggedIn: true });
         }
         else {
@@ -92,63 +94,64 @@ class SignIn extends React.Component {
         }
     }
 
+    // this.state.loggedIn ? <Redirect to='/app' />
+    // :
     render() {
-        return this.state.loggedIn ? <Redirect to='/' />
-            : (
-                <RTL>
-                    <MuiThemeProvider theme={theme}>
-                        <main className={this.classes.main}>
-                            <CssBaseline />
-                            <Paper className={this.classes.paper}>
-                                <Avatar className={this.classes.avatar}>
-                                    <LockIcon />
-                                </Avatar>
-                                <Typography component="h1" variant="h5">
-                                    ورود به سیستم
+        return (
+            <RTL>
+                <MuiThemeProvider theme={theme}>
+                    <main className={this.classes.main}>
+                        <CssBaseline />
+                        <Paper className={this.classes.paper}>
+                            <Avatar className={this.classes.avatar}>
+                                <LockIcon />
+                            </Avatar>
+                            <Typography component="h1" variant="h5">
+                                ورود به سیستم
                             </Typography>
-                                <form className={this.classes.form} onSubmit={(event) => this.handleSubmit(event)}>
+                            <form className={this.classes.form} onSubmit={(event) => this.handleSubmit(event)}>
 
-                                    <FormControl margin="normal" required fullWidth>
-                                        <InputLabel htmlFor="email">شناسه</InputLabel>
-                                        <Input
-                                            ref={(x) => this.usernameCtrl = x}
-                                            inputRef={(x) => this.username = x}
-                                            defaultValue="admin"
-                                            id="email" name="email" autoComplete="email" autoFocus />
-                                    </FormControl>
+                                <FormControl margin="normal" required fullWidth>
+                                    <InputLabel htmlFor="email">شناسه</InputLabel>
+                                    <Input
+                                        ref={(x) => this.usernameCtrl = x}
+                                        inputRef={(x) => this.username = x}
+                                        defaultValue="admin"
+                                        id="email" name="email" autoComplete="email" autoFocus />
+                                </FormControl>
 
-                                    <FormControl margin="normal" required fullWidth>
-                                        <InputLabel htmlFor="password">رمز عبور</InputLabel>
-                                        <Input
-                                            ref={(x) => this.passwordCtrl = x}
-                                            inputRef={(x) => this.password = x}
-                                            defaultValue="admin"
-                                            name="password" type="password" id="password" autoComplete="current-password" />
-                                    </FormControl>
+                                <FormControl margin="normal" required fullWidth>
+                                    <InputLabel htmlFor="password">رمز عبور</InputLabel>
+                                    <Input
+                                        ref={(x) => this.passwordCtrl = x}
+                                        inputRef={(x) => this.password = x}
+                                        defaultValue="admin"
+                                        name="password" type="password" id="password" autoComplete="current-password" />
+                                </FormControl>
 
-                                    <FormControlLabel
-                                        control={<Checkbox value="remember" color="primary" />}
-                                        label="مرا بخاطر داشته باش!"
-                                    />
-                                    <Button
-                                        //onClick={() => alert('aaaaa')}
-                                        type="submit"
-                                        fullWidth
-                                        variant="contained"
-                                        color="primary"
-                                        className={this.classes.submit}>
-                                        ورود به سیستم
+                                <FormControlLabel
+                                    control={<Checkbox value="remember" color="primary" />}
+                                    label="مرا بخاطر داشته باش!"
+                                />
+                                <Button
+                                    //onClick={() => alert('aaaaa')}
+                                    type="submit"
+                                    fullWidth
+                                    variant="contained"
+                                    color="primary"
+                                    className={this.classes.submit}>
+                                    ورود به سیستم
                                 </Button>
-                                    <Typography style={{ color: 'red', direction: 'rtl', textAlign: 'right', fontSize: 13 }}
-                                        component="h1" variant="h5">
-                                        {this.state.errorText}
-                                    </Typography>
-                                </form>
-                            </Paper>
-                        </main>
-                    </MuiThemeProvider>
-                </RTL>
-            );
+                                <Typography style={{ color: 'red', direction: 'rtl', textAlign: 'right', fontSize: 13 }}
+                                    component="h1" variant="h5">
+                                    {this.state.errorText}
+                                </Typography>
+                            </form>
+                        </Paper>
+                    </main>
+                </MuiThemeProvider>
+            </RTL>
+        );
     }
 }
 
