@@ -15,21 +15,27 @@ export default class RoutingComponent extends Component {
             this.state = { loggedIn: true };
     }
 
-    loginDoneFunc = () => {  
- 
+    loginDoneFunc = () => {
+
         //alert('خوش آمدید !');//
         this.setState({ loggedIn: true });
     }
 
+    userLoggedOff = () => {
+
+        localStorage.removeItem('user');
+        this.setState({ loggedIn: false });
+    };
+
     render() {
 
-        console.log('login:',this.state.loggedIn);
+        console.log('login:', this.state.loggedIn);
         if (!this.state.loggedIn)
             return (<SignIn loginDone={this.loginDoneFunc} />);
         else
             return <HashRouter hashType='slash'>
                 <Switch >
-                    <Route path="/" history={window.history} component={() => { return <App />; }} />
+                    <Route path="/" history={window.history} component={() => { return <App {...this.props} userLoggedOff={this.userLoggedOff} />; }} />
                 </Switch>
             </HashRouter>;
 

@@ -94,18 +94,34 @@ const styles = theme => ({
 });
 
 class PrimarySearchAppBar extends React.Component {
+
     state = {
         anchorEl: null,
         mobileMoreAnchorEl: null,
     };
 
+    constructor(props) {
+        super(props);
+
+        console.log(props.userLoggedOff);
+        this.userLoggedOff = props.userLoggedOff;
+    }
+
     handleProfileMenuOpen = event => {
         this.setState({ anchorEl: event.currentTarget });
+    };
+
+    handleLogoff = () => {
+        // this.setState({ anchorEl: null });
+        // this.handleMobileMenuClose();
+
+        this.userLoggedOff();
     };
 
     handleMenuClose = () => {
         this.setState({ anchorEl: null });
         this.handleMobileMenuClose();
+
     };
 
     handleMobileMenuOpen = event => {
@@ -130,8 +146,8 @@ class PrimarySearchAppBar extends React.Component {
                 open={isMenuOpen}
                 onClose={this.handleMenuClose}
             >
-                <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-                <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
+                <MenuItem onClick={this.handleLogoff}>Logoff</MenuItem>
+                {/* <MenuItem onClick={this.handleMenuClose}>My account</MenuItem> */}
             </Menu>
         );
 
@@ -227,8 +243,8 @@ class PrimarySearchAppBar extends React.Component {
     }
 }
 
-PrimarySearchAppBar.propTypes = {
+{/* PrimarySearchAppBar.propTypes = {
     classes: PropTypes.object.isRequired,
-};
+}; */}
 
 export default withStyles(styles)(PrimarySearchAppBar);
