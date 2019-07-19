@@ -2,9 +2,9 @@
 
 export class Ctrl { }
 
-// let runWithoutBackend = true;
-let runWithoutBackend = false;
-let appStoreApiBase = 'http://localhost'
+let runWithoutBackend = true;
+//let runWithoutBackend = false;
+let appStoreApiBase = 'http://localhost';
 
 let testApps = [
     { '_id': '5cb6177b66b4fe5110fb84b0', 'appCode': 2000, 'name': 'طاقچه', 'developer': 'بازی سازی کاسپین', 'rate': 4.8, 'category': 'کلمات و دانستنی‌ها', 'isGame': 'TRUE', 'inatallCount': ' 20,000 ', 'size_mb': 23.1, 'version': 1.1, 'shamed': '۱-۲-۶۸۹۷۷۷-۶۳-۰-۱۸۱۸۵۵', 'price': 0, 'inAppPurchase': true, 'descr': '', 'lastChanges': '', 'access': '', 'comments': [{ 'user': 'Ehsan', 'rate': 4, 'comment': 'برنامه خوبیه !' }] },
@@ -18,7 +18,7 @@ Ctrl.getAppsOfGroup = async (searchStr) => {
 
     if (runWithoutBackend)
         if (!searchStr)
-            return testApps
+            return testApps;
         else
             return testApps.filter(x => x.name.indexOf(searchStr) >= 0);
 

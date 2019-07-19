@@ -72,6 +72,7 @@ class SignIn extends React.Component {
 
         this.classes = props.classes;
         this.state = { errorText: '', loggedIn: false };
+        this.loginDone = props.loginDone;
     }
 
     handleSubmit(event) {
@@ -87,7 +88,8 @@ class SignIn extends React.Component {
 
             //console.log('redirecting');
             //this.props.history.push('/redirect');
-            this.setState({ loggedIn: true });
+            //this.setState({ loggedIn: true });
+            this.loginDone();
         }
         else {
             this.setState({ errorText: 'شناسه یا رمز عبور اشتباه است' });
