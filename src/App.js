@@ -24,7 +24,7 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <Route path='/' component={(props) => <AppBar {...props} />} />
-        <Route path='/' exact component={(props) => <Home ref={x => this.homepage = x} {...props} />} />
+        <Route path='/' exact component={(props) => <Home {...props} />} />
         <Route path="/appinfo/:id" render={(props) => { return <AppInfo {...props} appCode={props.match.params.id} />; }} />
       </MuiThemeProvider>
     );

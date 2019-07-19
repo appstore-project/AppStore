@@ -2,7 +2,10 @@
 
 export class Ctrl { }
 
-let runWithoutBackend = true;
+// let runWithoutBackend = true;
+let runWithoutBackend = false;
+let appStoreApiBase = 'http://localhost'
+
 let testApps = [
     { '_id': '5cb6177b66b4fe5110fb84b0', 'appCode': 2000, 'name': 'طاقچه', 'developer': 'بازی سازی کاسپین', 'rate': 4.8, 'category': 'کلمات و دانستنی‌ها', 'isGame': 'TRUE', 'inatallCount': ' 20,000 ', 'size_mb': 23.1, 'version': 1.1, 'shamed': '۱-۲-۶۸۹۷۷۷-۶۳-۰-۱۸۱۸۵۵', 'price': 0, 'inAppPurchase': true, 'descr': '', 'lastChanges': '', 'access': '', 'comments': [{ 'user': 'Ehsan', 'rate': 4, 'comment': 'برنامه خوبیه !' }] },
     { '_id': '5cb6177b66b4fe5110fb84b1', 'appCode': 4000, 'name': 'سلطان ضربه کاشته', 'developer': 'مدین گیم', 'rate': 0.5, 'category': 'ورزشی', 'isGame': 'TRUE', 'inatallCount': ' 20,000 ', 'size_mb': 45.6, 'version': 4.5, 'shamed': '۱-۲-۶۸۹۷۷۷-۶۳-۰-۱۸۳۶۵۵', 'price': 0, 'inAppPurchase': true, 'descr': '', 'lastChanges': '', 'access': '', 'comments': [{ 'user': 'Ehsan', 'rate': 4, 'comment': 'برنامه خوبیه !' }] },
@@ -19,15 +22,16 @@ Ctrl.getAppsOfGroup = async (searchStr) => {
         else
             return testApps.filter(x => x.name.indexOf(searchStr) >= 0);
 
-    var url = new URL('http://localhost:3000/apps/getAll'),
-        params = { n: 100000, offset: 0 };
+    // var url = new URL('http://localhost:3000/apps/getAll'),
+    //     params = { n: 100000, offset: 0 };
+    var url = new URL(appStoreApiBase+'/apps/getAll');
 
-    Object.keys(params).map(key => url.searchParams.append(key, params[key]));
+    // Object.keys(params).map(key => url.searchParams.append(key, params[key]));
 
     let res = await fetch(url);
     let resInfo = await res.json();
-
-    return (resInfo);
+    // return (resInfo);
+    return (resInfo._embedded.appProductList);
 };
 
 Ctrl.getAppInfo = async (appCode) => {
@@ -37,15 +41,16 @@ Ctrl.getAppInfo = async (appCode) => {
         return res;
     }
 
-    var url = new URL('http://localhost:3000/apps/getAppInfo'),
-        params = { appCode };
+    // var url = new URL('http://localhost:3000/apps/getAppInfo'),
+    //     params = { appCode };
+    var url = new URL(appStoreApiBase+'/apps/getAppInfo/'+appCode);
 
-    Object.keys(params).map(key => url.searchParams.append(key, params[key]));
+    // Object.keys(params).map(key => url.searchParams.append(key, params[key]));
 
     let res = await fetch(url);
     let resInfo = await res.json();
-
-    return (resInfo);
+    // return (resInfo);
+    return ([resInfo]);
 };
 
 Ctrl.addComment = async (appCode, rate, comment) => {
@@ -74,6 +79,3 @@ Ctrl.addComment = async (appCode, rate, comment) => {
 
     return (resInfo);
 };
-
-
-

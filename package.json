@@ -12,7 +12,7 @@
     "react-jss": "^8.6.1",
     "react-rater": "^5.0.5",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8"
+    "react-scripts": "^3.0.1"
   },
   "scripts": {
     "start": "set PORT=3002 && react-scripts start",
