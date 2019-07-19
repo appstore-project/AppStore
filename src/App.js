@@ -15,7 +15,7 @@ const theme = createMuiTheme({
   },
   typography: {
     useNextVariants: true,
-    fontFamily: 'Iran Sans", tahoma',
+    fontFamily: 'Iran Sans, tahoma',
   },
 });
 
